@@ -200,5 +200,8 @@
     "location": "Localização",
     "city": "Braga, Portugal",
     "connect": "Conecte-se comigo"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
   }
 }
