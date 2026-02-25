@@ -9,7 +9,7 @@ export const Footer = () => {
                 © {new Date().getFullYear()} Sara Fontes. {t("footer.rights")}
             </p>
 
-            <a href="home" className="p-2 rounded-full bg-primary/10 hover-bg-primary/20 text-primary transition-colors">
+            <a href="#home" className="p-2 rounded-full bg-primary/10 hover-bg-primary/20 text-primary transition-colors">
                 <ArrowUp size={20}/>
             </a>
         </footer>
