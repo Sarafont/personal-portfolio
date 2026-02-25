@@ -1,57 +1,22 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
-
-const projects = [
-    {
-       id: 1,
-       title: "Art Gallery - React Project" ,
-       description: "Website for the Institute of Chicago, where is listed the artwork of the week, and the user can vote in their favorite artworks.",
-       image: "/projects/ArtGallery.png",
-       tags: ["React", "HTML/CSS", "JavaScript"],
-       demoUrl: "",
-       githubUrl: "https://github.com/Sarafont/React-Project---Art-Gallery",
-    },
-    {
-       id: 2,
-       title: "MovieCine - Angular Project" ,
-       description: "This is a webpage for a fictitious movie rental business, where the user can rent movies online.",
-       image: "/projects/MovieCine.png",
-       tags: ["Angular", "HTML/CSS", "JavaScript"],
-       demoUrl: "",
-       githubUrl: "https://github.com/Sarafont/Angular-MovieCine-Project",
-    },
-    {
-       id: 3,
-       title: "Restaurant Inventory Management - Software Engineering Project" ,
-       description: "This project is an application developed in Java and SQL for managing the inventory of a fictional restaurant.",
-       image: "/projects/GestaoStock.png",
-       tags: ["Java", "SQL", "Netbeans"],
-       demoUrl: "https://www.youtube.com/watch?v=OXiiC4CCKOc",
-       githubUrl: "https://github.com/Sarafont/Engenharia-de-Software",
-    },
-    {
-       id: 4,
-       title: "Tracking Monitoring of Program Execution - Operating Systems Project" ,
-       description: "Project developed in the Operating Systems course unit of the Bachelor’s degree in Computer Science. ",
-       image: "/projects/SO.png",
-       tags: ["C"],
-       demoUrl: "",
-       githubUrl: "https://github.com/Sarafont/SO-TP",
-    },
-];
+import { useTranslation } from "react-i18next";
 
 export const Projects = () => {
+    const { t } = useTranslation();
+    const projects = t("projects.items", { returnObjects: true });
+
     return (
         <section id="projects" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-primary">
-                    Projects
+                    {t("projects.title")}
                 </h2>
 
-                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">Some of my projects</p>
+                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">{t("projects.subtitle")}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
-                    {projects.map((project, key) => (
-                        <div key={key} className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover">
+                    {projects.map((project) => (
+                        <div key={project.id} className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover">
                             <div className="h-48 overflow-hidden">
                                 <a 
                                     href={project.image}
@@ -82,6 +47,8 @@ export const Projects = () => {
                                                 href={project.demoUrl}
                                                 target="_blank"
                                                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                                aria-label={t("projects.openDemo")}
+                                                title={t("projects.openDemo")}
                                             >
                                                 <ExternalLink size={20}/>
                                             </a>
@@ -90,6 +57,8 @@ export const Projects = () => {
                                             href={project.githubUrl}
                                             target="_blank"
                                             className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                            aria-label={t("projects.openGithub")}
+                                            title={t("projects.openGithub")}
                                         >
                                             <Github size={20}/>
                                         </a>
@@ -106,7 +75,7 @@ export const Projects = () => {
                         target="_blank" //isto é para abrir noutra janela
                         className="initial-button w-fit flex items-center mx-auto gap-2"
                     >
-                            Check My GitHub <ArrowRight size={16}/>
+                            {t("projects.ctaGithub")}<ArrowRight size={16}/>
                     </a>
                 </div>
             </div>

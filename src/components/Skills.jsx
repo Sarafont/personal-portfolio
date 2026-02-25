@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
+import { useTranslation } from "react-i18next";
 
 const skills = [
     //FE
@@ -26,31 +27,41 @@ const skills = [
 const categories = ["all", "frontend", "backend", "tools"];
 
 export const Skills = () => {
+    const { t } = useTranslation();
+
+    const skills = t("skills.skillsList", { returnObjects: true });
+    const categories = t("skills.categories", { returnObjects: true });
+
     //escolher categoria
     const [activeCategory, setActiveCategory] = useState("all");
     const filteredSkills = skills.filter(
         (skill) => activeCategory === "all" || skill.category === activeCategory
     );
 
+    console.log("activeCategory:", activeCategory);
+    console.log("categories in skills:", skills.map(s => s.category));
+
     return (
         <section id="skills" className="py-24 px-4 relative bg-secondary/30">
             <div className="container mx-auto max-w-5xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                    My <span className="text-primary">Skills</span>
+                    {t("skills.title")}{" "}<span className="text-primary">{t("skills.title2")}</span>
                 </h2>
 
                 {/* Filtros */}
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {categories.map((c, key) => (
-                        <button 
-                            key={key} 
-                            onClick={() => setActiveCategory(c)}
+                    {categories.map((c) => (
+                        <button
+                            key={c.key}
+                            onClick={() => setActiveCategory(c.key)}
                             className={cn(
-                                "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer",
-                                activeCategory === c ? "bg-primary text-primary-foreground" : "bg-secondary/70 text-foreground hover:bg-secondary"
+                            "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer",
+                            activeCategory === c.key
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-secondary/70 text-foreground hover:bg-secondary"
                             )}
                         >
-                            {c}
+                            {c.label}
                         </button>
                     ))}
                 </div>

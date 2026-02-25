@@ -1,0 +1,204 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "greetingPrefix": "Hi, I'm",
+    "firstName": "Sara",
+    "lastName": "Fontes",
+    "intro": "I am a Computer Scientist and Information Systems Master with a strong interest in building digital solutions that turn ideas into practice. I value continuous learning and enjoy working on challenges that require both technical skill and problem-solving.",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "aboutLine": "About",
+    "meLine": "me",
+    "academic": "Academic background",
+    "contact": "Get in touch",
+    "cv": "View my CV",
+    "experience": "Experience",
+    "experiences": [
+        {
+            "date": "2019",
+            "role": "Content insertion",
+            "company": "Global Skillmind"
+        },
+        {
+            "date": "2022",
+            "role": "Full Stack Developer",
+            "company": "Cesium Summer Camp - UMinho"
+        },
+        {
+            "date": "2022–2023",
+            "role": "Sales Assistant",
+            "company": "Inditex Lda"
+        },
+        {
+            "date": "2024–2025",
+            "role": "Full Stack Developer - Curricular internship",
+            "company": "Accenture"
+        },
+        {
+            "date": "2025–Current",
+            "role": "Front-end Developer - Internship",
+            "company": "Accenture"
+        }
+    ]
+  },
+  "academic": {
+    "bachelor": "Bachelor's degree in Computer Science",
+    "university": "University of Minho",
+    "bYear": "2020–2023",
+    "master": "Master's degree in Information Systems",
+    "mYear": "2023-2025"
+  }, 
+  "skills": {
+    "skillsList": [
+      {
+        "name": "HTML/CSS",
+        "level": "90",
+        "category": "frontend"
+      },
+      {
+        "name": "Svelte",
+        "level": "65",
+        "category": "frontend"
+      },
+      {
+        "name": "React",
+        "level": "70",
+        "category": "frontend"
+      },
+      {
+        "name": "AngularJs",
+        "level": "60",
+        "category": "frontend"
+      },
+      {
+        "name": "JavaScript",
+        "level": "90",
+        "category": "frontend"
+      },
+      {
+        "name": "TypeScript",
+        "level": "70",
+        "category": "frontend"
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": "90",
+        "category": "frontend"
+      },
+      {
+        "name": "Java",
+        "level": "70",
+        "category": "backend"
+      },
+      {
+        "name": "Python",
+        "level": "80",
+        "category": "backend"
+      },
+      {
+        "name": "SQL",
+        "level": "80",
+        "category": "backend"
+      },
+      {
+        "name": "MySQL",
+        "level": "70",
+        "category": "backend"
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "70",
+        "category": "backend"
+      },
+      {
+        "name": "C",
+        "level": "60",
+        "category": "backend"
+      },
+      {
+        "name": "C++",
+        "level": "35",
+        "category": "backend"
+      },
+      {
+        "name": "Git/Github",
+        "level": "50",
+        "category": "tools"
+      },
+      {
+        "name": "Scrum Agile",
+        "level": "50",
+        "category": "tools"
+      }
+    ],
+    "categories": [
+      { "key": "all", "label": "All" },
+      { "key": "frontend", "label": "Frontend" },
+      { "key": "backend", "label": "Backend" },
+      { "key": "tools", "label": "Tools" }
+    ],
+    "title": "My",
+    "title2": "Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Some of my projects",
+    "ctaGithub": "Check my GitHub",
+    "openDemo": "Open demo",
+    "openGithub": "Open GitHub repository",
+    "items": [
+      {
+        "id": 1,
+        "title": "Art Gallery - React Project",
+        "description": "Website for the Institute of Chicago, where the artwork of the week is listed, and the user can vote for their favourite artworks.",
+        "image": "/projects/ArtGallery.png",
+        "tags": ["React", "HTML/CSS", "JavaScript"],
+        "demoUrl": "",
+        "githubUrl": "https://github.com/Sarafont/React-Project---Art-Gallery"
+      },
+      {
+        "id": 2,
+        "title": "MovieCine - Angular Project",
+        "description": "Webpage for a fictional movie rental business, where the user can rent movies online.",
+        "image": "/projects/MovieCine.png",
+        "tags": ["Angular", "HTML/CSS", "JavaScript"],
+        "demoUrl": "",
+        "githubUrl": "https://github.com/Sarafont/Angular-MovieCine-Project"
+      },
+      {
+        "id": 3,
+        "title": "Restaurant Inventory Management - Software Engineering Project",
+        "description": "Application developed in Java and SQL to manage the inventory of a fictional restaurant.",
+        "image": "/projects/GestaoStock.png",
+        "tags": ["Java", "SQL", "Netbeans"],
+        "demoUrl": "https://www.youtube.com/watch?v=OXiiC4CCKOc",
+        "githubUrl": "https://github.com/Sarafont/Engenharia-de-Software"
+      },
+      {
+        "id": 4,
+        "title": "Tracking and Monitoring Program Execution - Operating Systems Project",
+        "description": "Project developed for the Operating Systems course unit in the Bachelor’s degree in Computer Science.",
+        "image": "/projects/SO.png",
+        "tags": ["C"],
+        "demoUrl": "",
+        "githubUrl": "https://github.com/Sarafont/SO-TP"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in",
+    "title2": "Touch",
+    "subtitle": "Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new opportunities.",
+    "info": "Contact Information",
+    "email": "sarafontes2001@gmail.com",
+    "location": "Localização",
+    "city": "Braga, Portugal",
+    "connect": "Connect with me"
+  }
+}

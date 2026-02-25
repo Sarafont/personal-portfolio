@@ -1,6 +1,9 @@
 import { GraduationCap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function Academic() {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-6">
 
@@ -9,9 +12,9 @@ export function Academic() {
           <div className="flex items-start gap-3">
             <GraduationCap className="h-5 w-5 text-primary mt-0.5" />
             <div>
-              <p className="font-semibold">Bachelor&apos;s degree in Computer Science</p>
-              <p className="text-sm text-muted-foreground">University of Minho</p>
-              <span className="text-xs text-muted-foreground">2020–2023</span>
+              <p className="font-semibold">{t("academic.bachelor")}</p>
+              <p className="text-sm text-muted-foreground">{t("academic.university")}</p>
+              <span className="text-xs text-muted-foreground">{t("academic.bYear")}</span>
             </div>
           </div>
         </li>
@@ -20,9 +23,9 @@ export function Academic() {
           <div className="flex items-start gap-3">
             <GraduationCap className="h-5 w-5 text-primary mt-0.5" />
             <div>
-              <p className="font-semibold">Master&apos;s degree in Information Systems</p>
-              <p className="text-sm text-muted-foreground">University of Minho</p>
-              <span className="text-xs text-muted-foreground">2023–2025</span>
+              <p className="font-semibold">{t("academic.master")}</p>
+              <p className="text-sm text-muted-foreground">{t("academic.university")}</p>
+              <span className="text-xs text-muted-foreground">{t("academic.mYear")}</span>
             </div>
           </div>
         </li>
