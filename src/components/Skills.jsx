@@ -48,8 +48,26 @@ export const Skills = () => {
                     {t("skills.title")}{" "}<span className="text-primary">{t("skills.title2")}</span>
                 </h2>
 
-                {/* Filtros */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                {/* Filtros Mobile*/}
+                <div className="grid grid-cols-2 gap-3 mb-12 md:hidden">
+                    {categories.map((c) => (
+                        <button
+                        key={c.key}
+                        onClick={() => setActiveCategory(c.key)}
+                        className={cn(
+                            "px-4 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer text-sm",
+                            activeCategory === c.key
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-secondary/70 text-foreground hover:bg-secondary"
+                        )}
+                        >
+                        {c.label}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Filtros Desktop*/}
+                <div className="hidden md:flex flex-wrap justify-center gap-4 mb-12">
                     {categories.map((c) => (
                         <button
                             key={c.key}
@@ -66,8 +84,22 @@ export const Skills = () => {
                     ))}
                 </div>
 
-                {/* Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Cards Mobile*/}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:hidden">
+                    {filteredSkills.map((skill, key) => (
+                        <div
+                        key={key}
+                        className="bg-card px-2 py-2 rounded-lg shadow-xs border text-center"
+                        >
+                        <h3 className="font-small text-sm leading-snug break-words">
+                            {skill.name}
+                        </h3>
+                        </div>
+                    ))}
+                </div>
+                
+                {/* Cards Desktop*/}
+                <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredSkills.map((skill, key) => (
                         <div key={key} className="bg-card p-6 rounded-lg shadow-xs card-hover">
                             <div className="text-left mb-4">
