@@ -3,6 +3,7 @@ import { cn } from "../lib/utils";
 import { X } from 'lucide-react';
 import { Menu } from 'lucide-react';
 import { useTranslation } from "react-i18next";
+import { ThemeToggle } from "./ThemeToggle";
 
 //Objeto com uma lista de link da navbar
 const navItems = [
@@ -102,7 +103,7 @@ export const Navbar = () => {
                     </div>
                 </div>
 
-                {/* Versão mobile */}
+                {/* Versão mobile - botão */}
                 <button 
                     onClick={() => setIsMenuOpen((prev) => !prev)} 
                     className="md:hidden p-2 text-foreground z-50"
@@ -111,22 +112,59 @@ export const Navbar = () => {
                     {isMenuOpen ? <X size={24}/> : <Menu size={24}/>}
                 </button>
 
-                <div className={cn(
+                { /* Versão mobile menu*/}
+                <div
+                className={cn(
                     "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
                     "transition-all duration-300 md:hidden",
                     isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                )}>
-                    <div className="flex flex-col space-y-8 text-xl">
-                        {navItems.map((item, key) => (
-                            <a 
-                                key={key} 
-                                href={item.href} 
-                                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                onClick={() => setIsMenuOpen(false)}    
-                            >
-                                {t(`nav.${item.key}`)}
-                            </a>
+                )}
+                >
+                    <div className="flex flex-col space-y-8 text-xl items-center">
+                        {navItems.map((item) => (
+                        <a
+                            key={item.key}
+                            href={item.href}
+                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {t(`nav.${item.key}`)}
+                        </a>
                         ))}
+
+                        {/* Idioma mobile */}
+                        <div className="pt-4 flex items-center gap-4">
+                        <button
+                            onClick={() => changeLanguage("en")}
+                            className={cn(
+                            "flex items-center gap-2 px-3 py-2 rounded-full border transition-colors text-sm",
+                            current === "en"
+                                ? "border-primary text-primary"
+                                : "border-border text-foreground/80"
+                            )}
+                        >
+                            <img src="/en.png" alt="English" className="w-3 h-3 rounded-sm" />
+                            EN
+                        </button>
+
+                        <button
+                            onClick={() => changeLanguage("pt")}
+                            className={cn(
+                            "flex items-center gap-2 px-3 py-2 rounded-full border transition-colors text-sm",
+                            current === "pt"
+                                ? "border-primary text-primary"
+                                : "border-border text-foreground/80"
+                            )}
+                        >
+                            <img src="/pt.png" alt="Português" className="w-3 h-3 rounded-sm" />
+                            PT
+                        </button>
+                        </div>
+
+                        {/* Tema mobile */}
+                        <div className="pt-2 flex flex-col items-center gap-2">
+                            <ThemeToggle className="p-2 bg-primary/10" />
+                        </div>
                     </div>
                 </div>
             </div>
