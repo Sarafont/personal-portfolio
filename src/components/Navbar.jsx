@@ -51,13 +51,39 @@ export const Navbar = () => {
 
     useEffect(() => {
         if (isMenuOpen) {
-            document.body.style.overflow = "hidden";
+            const scrollY = window.scrollY;
+
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.left = "0";
+            document.body.style.right = "0";
+            document.body.style.width = "100%";
         } else {
-            document.body.style.overflow = "";
+            const scrollY = document.body.style.top;
+
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+
+            if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY || "0") * -1);
+            }
         }
 
         return () => {
-            document.body.style.overflow = "";
+            const scrollY = document.body.style.top;
+
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+
+            if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY || "0") * -1);
+            }
         };
     }, [isMenuOpen]);
 
@@ -116,66 +142,74 @@ export const Navbar = () => {
                 </div>
 
                 {/* Versão mobile - botão */}
-                <button 
-                    onClick={() => setIsMenuOpen((prev) => !prev)} 
-                    className="md:hidden p-2 text-foreground z-50"
-                    aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-                >
-                    {isMenuOpen ? <X size={24}/> : <Menu size={24}/>}
-                </button>
+                {!isMenuOpen && (
+                    <button 
+                        onClick={() => setIsMenuOpen(true)} 
+                        className="md:hidden p-2 text-foreground z-50"
+                        aria-label="Open Menu"
+                    >
+                        <Menu size={24} />
+                    </button>
+                )}
 
                 { /* Versão mobile menu*/}
-                <div
-                className={cn(
-                    "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-                    "transition-all duration-300 md:hidden",
+                <div className={cn(
+                    "fixed inset-0 z-40 md:hidden bg-background overflow-y-auto",
+                    "transition-all duration-300",
                     isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                 )}
                 >
-                    <div className="flex flex-col space-y-8 text-xl items-center">
+                    <button
+                        onClick={() => setIsMenuOpen(false)}
+                        className="absolute top-6 right-6 text-foreground z-50"
+                        aria-label="Close Menu"
+                    >
+                        <X size={28} />
+                    </button>
+                    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-24">
+                        <div className="flex flex-col space-y-8 text-xl items-center">
                         {navItems.map((item) => (
-                        <a
+                            <a
                             key={item.key}
                             href={item.href}
                             className="text-foreground/80 hover:text-primary transition-colors duration-300"
                             onClick={() => setIsMenuOpen(false)}
-                        >
+                            >
                             {t(`nav.${item.key}`)}
-                        </a>
+                            </a>
                         ))}
 
-                        {/* Idioma mobile */}
                         <div className="pt-4 flex items-center gap-4">
-                        <button
+                            <button
                             onClick={() => changeLanguage("en")}
                             className={cn(
-                            "flex items-center gap-2 px-3 py-2 rounded-full border transition-colors text-sm",
-                            current === "en"
+                                "flex items-center gap-2 px-3 py-2 rounded-full border transition-colors",
+                                current === "en"
                                 ? "border-primary text-primary"
                                 : "border-border text-foreground/80"
                             )}
-                        >
-                            <img src="/en.png" alt="English" className="w-3 h-3 rounded-sm" />
+                            >
+                            <img src="/en.png" alt="English" className="w-5 h-5 rounded-sm" />
                             EN
-                        </button>
+                            </button>
 
-                        <button
+                            <button
                             onClick={() => changeLanguage("pt")}
                             className={cn(
-                            "flex items-center gap-2 px-3 py-2 rounded-full border transition-colors text-sm",
-                            current === "pt"
+                                "flex items-center gap-2 px-3 py-2 rounded-full border transition-colors",
+                                current === "pt"
                                 ? "border-primary text-primary"
                                 : "border-border text-foreground/80"
                             )}
-                        >
-                            <img src="/pt.png" alt="Português" className="w-3 h-3 rounded-sm" />
+                            >
+                            <img src="/pt.png" alt="Português" className="w-5 h-5 rounded-sm" />
                             PT
-                        </button>
+                            </button>
                         </div>
 
-                        {/* Tema mobile */}
                         <div className="pt-2 flex flex-col items-center gap-2">
                             <ThemeToggle className="p-2 bg-primary/10" />
+                        </div>
                         </div>
                     </div>
                 </div>
