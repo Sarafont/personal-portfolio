@@ -47,7 +47,19 @@ export const Navbar = () => {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isMenuOpen]);
 
     return (
         <nav className={cn(
@@ -115,8 +127,9 @@ export const Navbar = () => {
                 { /* Versão mobile menu*/}
                 <div
                 className={cn(
-                    "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-                    "transition-all duration-300 md:hidden",
+                    "fixed inset-0 z-40 md:hidden bg-background/95 backdrop-blur-md",
+                    "transition-all duration-300",
+                    "overflow-y-auto",
                     isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                 )}
                 >
